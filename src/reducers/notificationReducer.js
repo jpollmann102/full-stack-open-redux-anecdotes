@@ -15,6 +15,19 @@ export const closeNotification = () => {
   }
 }
 
+export const setNotification = (message, timeout) => {
+  return async dispatch => {
+    dispatch({
+      type: 'UPDATE_NOTIFICATION',
+      message
+    });
+
+    setTimeout(() => {
+      dispatch({ type: 'CLOSE_NOTIFICATION' });
+    }, 5000);
+  }
+}
+
 const notificationReducer = (state = initialState, action) => {
   console.log('state now: ', state)
   console.log('action', action)
