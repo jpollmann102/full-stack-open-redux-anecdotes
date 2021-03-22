@@ -1,5 +1,4 @@
 import React from 'react';
-import anecdoteService from '../services/anecdotes';
 import { useDispatch } from 'react-redux'
 import { addAnecdote } from '../reducers/anecdoteReducer';
 import { changeNotification, closeNotification } from '../reducers/notificationReducer';

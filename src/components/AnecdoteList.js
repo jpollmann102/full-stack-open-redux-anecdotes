@@ -6,7 +6,7 @@ import { changeNotification, closeNotification } from '../reducers/notificationR
 
 const AnecdoteList = () => {
   const anecdotes = useSelector(state => {
-    return state.anecdotes.filter(a => a.content.includes(state.filter.filter));
+    return state.anecdotes.filter(a => a.content.includes(state.filter));
   });
   const dispatch = useDispatch()
 

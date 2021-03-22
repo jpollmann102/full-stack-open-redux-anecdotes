@@ -1,7 +1,3 @@
-const initialState = {
-  filter: ''
-}
-
 export const changeFilter = (filter) => {
   return {
     type: 'UPDATE_FILTER',
@@ -9,13 +5,13 @@ export const changeFilter = (filter) => {
   }
 }
 
-const filterReducer = (state = initialState, action) => {
+const filterReducer = (state = '', action) => {
   console.log('state now: ', state)
   console.log('action', action)
 
   switch(action.type) {
     case('UPDATE_FILTER'):
-      return { filter: action.filter };
+      return action.filter;
     default: return state;
   }
 }
