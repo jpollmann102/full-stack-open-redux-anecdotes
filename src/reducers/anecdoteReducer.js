@@ -11,16 +11,22 @@ export const addVote = (id) => {
 }
 
 export const addAnecdote = (anecdote) => {
-  return {
-    type: 'CREATE_ANECDOTE',
-    data: anecdote
+  return async dispatch => {
+    const newAnecdote = await anecdoteService.createAnecdote(anecdote);
+    dispatch({
+      type: 'CREATE_ANECDOTE',
+      data: newAnecdote
+    });
   }
 }
 
-export const initializeAnecdotes = (anecdotes) => {
-  return {
-    type: 'INITIALIZE_ANECDOTES',
-    data: anecdotes
+export const initializeAnecdotes = () => {
+  return async dispatch => {
+    const anecdotes = await anecdoteService.getAllAnecdotes();
+    dispatch({
+      type: 'INITIALIZE_ANECDOTES',
+      data: anecdotes
+    });
   }
 }
 
