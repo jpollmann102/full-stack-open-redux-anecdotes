@@ -2,6 +2,8 @@ const initialState = {
   message: ''
 }
 
+let timeoutId;
+
 export const changeNotification = (message) => {
   return {
     type: 'UPDATE_NOTIFICATION',
@@ -22,9 +24,10 @@ export const setNotification = (message, timeout) => {
       message
     });
 
-    setTimeout(() => {
+    if(timeoutId) clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
       dispatch({ type: 'CLOSE_NOTIFICATION' });
-    }, 5000);
+    }, timeout*1000);
   }
 }
 
