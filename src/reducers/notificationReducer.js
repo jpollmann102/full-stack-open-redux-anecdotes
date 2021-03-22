@@ -1,18 +1,17 @@
 const initialState = {
-  visible: false,
   message: ''
 }
 
 export const changeNotification = (message) => {
   return {
-    type: 'UPDATE',
+    type: 'UPDATE_NOTIFICATION',
     message
   }
 }
 
 export const closeNotification = () => {
   return {
-    type: 'CLOSE'
+    type: 'CLOSE_NOTIFICATION'
   }
 }
 
@@ -21,10 +20,10 @@ const notificationReducer = (state = initialState, action) => {
   console.log('action', action)
 
   switch(action.type) {
-    case('UPDATE'):
-      return { message: action.message, visible: true };
-    case('CLOSE'):
-      return { message: '', visible: false };
+    case('UPDATE_NOTIFICATION'):
+      return { message: action.message };
+    case('CLOSE_NOTIFICATION'):
+      return { message: '' };
     default: return state;
   }
 }

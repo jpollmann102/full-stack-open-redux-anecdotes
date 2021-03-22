@@ -27,14 +27,14 @@ const initialState = () => {
 
 export const addVote = (id) => {
   return {
-    type: 'VOTE',
+    type: 'VOTE_ANECDOTE',
     data: { id }
   }
 }
 
 export const addAnecdote = (content) => {
   return {
-    type: 'CREATE',
+    type: 'CREATE_ANECDOTE',
     data: {
       content,
       id: getId(),
@@ -48,7 +48,7 @@ const anecdoteReducer = (state = initialState(), action) => {
   console.log('action', action)
 
   switch(action.type) {
-    case('VOTE'):
+    case('VOTE_ANECDOTE'):
       const anecdoteToUpdate = state.find(a => a.id === action.data.id);
       console.log(anecdoteToUpdate);
       if(anecdoteToUpdate)
@@ -56,7 +56,7 @@ const anecdoteReducer = (state = initialState(), action) => {
         const updatedAnecdote = {...anecdoteToUpdate, votes: anecdoteToUpdate.votes + 1};
         return state.map(a => a.id === updatedAnecdote.id ? updatedAnecdote : a).sort(sortByVotes);
       }
-    case('CREATE'):
+    case('CREATE_ANECDOTE'):
       return state.concat(action.data).sort(sortByVotes);
     default: return state;
   }
